@@ -9,6 +9,7 @@ window.addEventListener("load", function() {
 	console.log("Loop is set to " + video.loop);
 	
 	// Initialize volume display
+	video.volume = 1.0;
 	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 });
 
@@ -59,10 +60,10 @@ document.querySelector("#mute").addEventListener("click", function() {
 });
 
 // Volume Slider
-document.querySelector("#slider").addEventListener("change", function() {
-	video.volume = this.value / 100;
-	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
-	console.log("Volume is " + video.volume);
+document.querySelector("#slider").addEventListener("input", function() {
+    video.volume = this.value / 100;
+    document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+    console.log("Volume is " + video.volume);
 });
 
 // Old School Button
