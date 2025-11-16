@@ -9,18 +9,14 @@ window.addEventListener("load", function() {
 	console.log("Loop is set to " + video.loop);
 	
 	// Initialize volume display
-	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+	document.querySelector("#volume").innerHTML = Math.round(video.volume * 100) + "%";
 });
 
 // Play Button
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
-	video = document.querySelector("#player1");
-	video.autoplay = false;
-	video.loop = true;
 	video.play();
-	let currentVolume = (video.volume * 100).toFixed(0);
-	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+	document.querySelector("#volume").innerHTML = Math.round(video.volume * 100) + "%";
 });
 
 // Pause Button
@@ -65,7 +61,7 @@ document.querySelector("#mute").addEventListener("click", function() {
 // Volume Slider
 document.querySelector("#slider").addEventListener("input", function() {
     video.volume = this.value / 100;
-    document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+    document.querySelector("#volume").innerHTML = Math.round(video.volume * 100) + "%";
     console.log("Volume is " + video.volume);
 });
 
