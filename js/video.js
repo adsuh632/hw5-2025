@@ -9,14 +9,17 @@ window.addEventListener("load", function() {
 	console.log("Loop is set to " + video.loop);
 	
 	// Initialize volume display
-	video.volume = 1.0;
 	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 });
 
 // Play Button
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
+	video = document.querySelector("#player1");
+	video.autoplay = false;
+	video.loop = true;
 	video.play();
+	let currentVolume = (video.volume * 100).toFixed(0);
 	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 });
 
