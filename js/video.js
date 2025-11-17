@@ -9,7 +9,6 @@ window.addEventListener("load", function() {
 	console.log("Loop is set to " + video.loop);
 	
 	// Initialize volume display
-	// Ensure slider reflects current video volume and show percent
 	var volumeDisplay = document.querySelector("#volume");
 	var slider = document.querySelector("#slider");
 	if (slider) {
@@ -22,14 +21,12 @@ window.addEventListener("load", function() {
 	// Play Button
 	document.querySelector("#play").addEventListener("click", function() {
 		console.log("Play Video");
-		// play() may return a promise in some browsers; update UI regardless
 		var playPromise = video.play();
 		if (volumeDisplay) {
 			volumeDisplay.innerHTML = Math.round(video.volume * 100) + "%";
 		}
 		if (playPromise !== undefined) {
 			playPromise.catch(function(error) {
-				// Play failed (autoplay policy or other); still update UI and log error
 				console.log("Play request failed:", error);
 			});
 		}
